@@ -17,6 +17,8 @@ int main()
 
 	digitalWrite(V_LEFT_FAR, 0);
 	digitalWrite(V_RIGHT_FAR, 0);
+	digitalWrite(V_RIGHT_CLOSE, 1);
+	digitalWrite(V_LEFT_CLOSE, 1);
 
 	while(true)
 	{

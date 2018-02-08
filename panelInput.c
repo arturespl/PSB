@@ -15,6 +15,7 @@ int main()
 	for(int i=0; i<INPUTS; ++i)
 	{
 		inputStates[i] = digitalRead(common::inputId2wiringPiID[i]);
+		common::write(i, inputStates[i]);
 	}
 
 	while(true)
