@@ -1,8 +1,27 @@
+#include <signal.h>
 #include "common.h"
+
+
+int inputState[OUTPUTS] = {0};
+
+
+void signal_callback(int signum)
+{
+   printf("Caught signal %d",signum);
+   // Cleanup and close up stuff here
+
+   states::write(inputState);
+}
+
 
 
 int main()
 {
+	if(signal(SIGUSR1, signal_callback) == SIG_ERR)
+	{
+		printf("\nCan't catch SIGUSR1");
+	}
+
 	common::init(O_RDONLY);
 
 	pinMode(V_LEFT_CLOSE,OUTPUT);
@@ -10,7 +29,7 @@ int main()
 	pinMode(V_LEFT_FAR,OUTPUT);
 	pinMode(V_RIGHT_FAR,OUTPUT);
 
-	int inputState[OUTPUTS] = {0};
+//	int inputState[OUTPUTS] = {0};
 
 	int inputId;
 	int state;
@@ -19,6 +38,9 @@ int main()
 	digitalWrite(V_RIGHT_FAR, 0);
 	digitalWrite(V_RIGHT_CLOSE, 1);
 	digitalWrite(V_LEFT_CLOSE, 1);
+
+	pid::write(getpid());
+    states::write(inputState);
 
 	while(true)
 	{

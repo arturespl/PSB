@@ -1,7 +1,4 @@
-ALL: old panel vol udp
-
-old:
-	g++ -o 230stateUpdater wiring.c -lwiringPi
+ALL: panel vol udp state
 
 panel:
 	g++ -o panelInput panelInput.c common.c -lwiringPi
@@ -14,3 +11,6 @@ udp:
 
 udptest:
 	g++ -o UdpSenderTest UdpSenderTest.c
+
+state:
+	g++ -o OutputState OutputState.c common.c  -lwiringPi

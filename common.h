@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <unistd.h>
+#include <string.h>
 
 #define LEFT230 	24
 #define RIGHT230 	25
@@ -21,8 +22,10 @@
 
 #define OUTPUTS 4
 
-#define FIFONAME "pipe.fifo"
-
+#define DATADIR "/home/pi/PSB/data/"
+#define FIFONAME "/home/pi/PSB/data/pipe.fifo"
+#define STATEFILE "/home/pi/PSB/data/states"
+#define PIDFILE "/home/pi/PSB/data/pid"
 
 
 class common
@@ -43,5 +46,25 @@ public:
 	static int inputId2OutputMap[INPUTS][OUTPUTS];
 	static int inputId2wiringPiID[INPUTS];
 };
+
+class states
+{
+	static FILE * fd;
+public:
+
+	static void clear();
+	static void write(int * states);
+	static void read(int * states);
+};
+
+class pid
+{
+	static FILE * fd;
+public:
+
+	static void write(int pid);
+	static void read(int & pid);
+};
+
 
 void sig_hendler(int);
