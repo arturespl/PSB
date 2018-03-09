@@ -22,10 +22,10 @@
 
 #define OUTPUTS 4
 
-#define DATADIR "/home/pi/PSB/data/"
-#define FIFONAME "/home/pi/PSB/data/pipe.fifo"
-#define STATEFILE "/home/pi/PSB/data/states"
-#define PIDFILE "/home/pi/PSB/data/pid"
+#define DATADIR "/tmp/PSB/"
+#define FIFONAME "/tmp/PSB/pipe.fifo"
+#define STATEFILE "/tmp/PSB/states"
+#define PIDFILE "/tmp/PSB/pid"
 
 
 class common

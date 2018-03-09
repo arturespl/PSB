@@ -2,25 +2,11 @@
 #include "common.h"
 
 
-int inputState[OUTPUTS] = {0};
-
-
-void signal_callback(int signum)
-{
-   printf("Caught signal %d",signum);
-   // Cleanup and close up stuff here
-
-   states::write(inputState);
-}
-
 
 
 int main()
 {
-	if(signal(SIGUSR1, signal_callback) == SIG_ERR)
-	{
-		printf("\nCan't catch SIGUSR1");
-	}
+	int inputState[OUTPUTS] = {0};
 
 	common::init(O_RDONLY);
 
@@ -39,17 +25,21 @@ int main()
 	digitalWrite(V_RIGHT_CLOSE, 1);
 	digitalWrite(V_LEFT_CLOSE, 1);
 
-	pid::write(getpid());
-    states::write(inputState);
-
 	while(true)
 	{
 		common::read(inputId, state);
+		if(state==-2)
+		{
+			printf("\nState request");
+			fflush(stdout);
+
+			states::write(inputState);
+		}
+		else if(state != 2)
+		{
 		printf("\nState changed on pin %d to %d", inputId, state);
 		fflush(stdout);
 
-		if(state != 2)
-		{
 			inputState[inputId] = state;
 			for(int i=0; common::inputId2OutputMap[inputId][i] > -1; ++i)
 			{
@@ -58,13 +48,15 @@ int main()
 		}
 		else
 		{
+		printf("\nState toggled on pin %d to %d", inputId, state);
+		fflush(stdout);
+
 			inputState[inputId] = (inputState[inputId] == 0 ? 1 : 0);
 			for(int i=0; common::inputId2OutputMap[inputId][i] > -1; ++i)
 			{
 				digitalWrite(common::inputId2OutputMap[inputId][i], inputState[inputId] == 0 ? 1 : 0);
 			}
 		}
-		delay(100);
 	}
 	return 0;
 }
