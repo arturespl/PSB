@@ -25,6 +25,12 @@ else if(!isset($_GET['my_checkbox']) && $_GET['isLampkaSet']=='1')
 	exec( "/home/pi/PSB/UdpSenderTest 1 0 127.0.0.1" );
 }
 
+if(isset($_GET['toglelampka']))
+{
+	#echo "toglam lampke";
+	exec("/home/pi/PSB/UdpSenderTest 1 2 127.0.0.1");
+}
+
 exec( "/home/pi/PSB/UdpSenderTest -2 -2 127.0.0.1 " );
 
 #system( "/home/pi/PSB/OutputState -1" );
@@ -42,10 +48,16 @@ else
 
 ?>
 
+<form action="index.php?toglelampka" method="get">
+
+<input type="hidden" name="toglelampka" value="1">
+<input type="submit" value="<?php echo $lampka=='1' ? "Wylacz lampke" : "Wlacz lampke"; ?>" style="font-size : 30px; height:150px; width:400px" />
+
+</form>
 
 
 
-<form action="" method="get">
+<form action="index.php" method="get">
 
 <input type="submit" value="Update" style="height:100px; width:200px" />
 
