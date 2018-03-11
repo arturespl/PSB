@@ -12,19 +12,6 @@ body {
 #echo $_GET['isLampkaSet'];
 
 
-if(isset($_GET['my_checkbox']) && $_GET['isLampkaSet']=='0')
-{
-	#echo "wlaczam lampke";
-    // user checked the box
-	exec( "/home/pi/PSB/UdpSenderTest 1 1 127.0.0.1" );
-}
-else if(!isset($_GET['my_checkbox']) && $_GET['isLampkaSet']=='1')
-{
-	#echo "wylaczam lampke";
-	// user did not check the box
-	exec( "/home/pi/PSB/UdpSenderTest 1 0 127.0.0.1" );
-}
-
 if(isset($_GET['toglelampka']))
 {
 	#echo "toglam lampke";
@@ -52,25 +39,5 @@ else
 
 <input type="hidden" name="toglelampka" value="1">
 <input type="submit" value="<?php echo $lampka=='1' ? "Wylacz lampke" : "Wlacz lampke"; ?>" style="font-size : 30px; height:150px; width:400px" />
-
-</form>
-
-
-
-<form action="index.php" method="get">
-
-<input type="submit" value="Update" style="height:100px; width:200px" />
-
-<p></p>
-
-<input  id='cmn-toggle-1' 
-        class='cmn-toggle cmn-toggle-round'
-        type='checkbox' 
-        value='1'
-        name='my_checkbox'
-        <?php echo $lampka== '1' ? 'checked' : '0'; ?> 
-/>
-<label for='cmn-toggle-1'>Lampka</label>
-<input type="hidden" name='isLampkaSet' value="<?php echo $lampka ?>" />
 
 </form>
