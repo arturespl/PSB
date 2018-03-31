@@ -6,7 +6,7 @@ int common::additionalFdToClose = -1;
 int common::inputId2OutputMap[INPUTS][OUTPUTS] = {
 	{V_LEFT_CLOSE, -1, -1, -1},
 	{V_RIGHT_CLOSE, -1, -1, -1},
-	{-1, -1, -1, -1},
+	{V_RIGHT_FAR, -1, -1, -1},
 	{-1, -1, -1, -1}
 };
 

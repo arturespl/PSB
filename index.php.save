@@ -1,5 +1,5 @@
 <style type="text/css">
-body {
+[Bbody {
   width: 120px;
   height: 700px;
 	font-size: 18pt; 
@@ -17,10 +17,6 @@ if(isset($_GET['toglelampka']))
 	#echo "toglam lampke";
 	exec("/home/pi/PSB/UdpSenderTest 1 2 127.0.0.1");
 }
-if(isset($_GET['toglesub']))
-{
-	exec("/home/pi/PSB/UdpSenderTest 2 2 127.0.0.1");
-}
 
 exec( "/home/pi/PSB/UdpSenderTest -2 -2 127.0.0.1 " );
 
@@ -37,15 +33,6 @@ else
 	$lampka = '0';
 }
 
-if( exec("/home/pi/PSB/OutputState 2" ) == "1" )
-{
- 	$sub = '1';
-}
-else
-{
-	$sub = '0';
-}
-
 ?>
 
 <form action="index.php?toglelampka" method="get">
@@ -58,6 +45,4 @@ else
 <form action="index.php?toglesub" method="get">
 
 <input type="hidden" name="toglesub" value="1">
-<input type="submit" value="<?php echo $sub=='1' ? "Wylacz wzmacniacz" :"Wlacz wzmacniacz"; ?>" style="font-size:30px; height:150px; width:400px" />
-
-</form>
+<input type="submit" value="<?php echo $sub==,
