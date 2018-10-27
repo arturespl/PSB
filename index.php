@@ -15,7 +15,7 @@ body {
 if(isset($_GET['toglelampka']))
 {
 	#echo "toglam lampke";
-	exec("/home/pi/PSB/UdpSenderTest 1 2 127.0.0.1");
+	exec("/home/pi/PSB/UdpSenderTest 3 2 127.0.0.1");
 }
 if(isset($_GET['toglesub']))
 {
@@ -26,7 +26,7 @@ exec( "/home/pi/PSB/UdpSenderTest -2 -2 127.0.0.1 " );
 
 #system( "/home/pi/PSB/OutputState -1" );
 
-if( exec( "/home/pi/PSB/OutputState 1" ) == "1" )
+if( exec( "/home/pi/PSB/OutputState 3" ) == "1" )
 {
 	#echo "lampka wlaczona";
 	$lampka = '1';

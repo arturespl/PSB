@@ -10,20 +10,20 @@ int main()
 
 	common::init(O_RDONLY);
 
-	pinMode(V_LEFT_CLOSE,OUTPUT);
-	pinMode(V_RIGHT_CLOSE,OUTPUT);
-	pinMode(V_LEFT_FAR,OUTPUT);
-	pinMode(V_RIGHT_FAR,OUTPUT);
+	pinMode(RELAY1,OUTPUT);
+	pinMode(RELAY2,OUTPUT);
+	pinMode(RELAY3,OUTPUT);
+	pinMode(RELAY4,OUTPUT);
 
 //	int inputState[OUTPUTS] = {0};
 
 	int inputId;
 	int state;
 
-	digitalWrite(V_LEFT_FAR, 0);
-	digitalWrite(V_RIGHT_FAR, 0);
-	digitalWrite(V_RIGHT_CLOSE, 1);
-	digitalWrite(V_LEFT_CLOSE, 1);
+	digitalWrite(RELAY1, 0);
+	digitalWrite(RELAY2, 0);
+	digitalWrite(RELAY3, 1);
+	digitalWrite(RELAY4, 1);
 
 	while(true)
 	{

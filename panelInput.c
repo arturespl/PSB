@@ -4,10 +4,10 @@ int main()
 {
 	common::init(O_WRONLY);
 
-	pinMode(LEFT230,INPUT);
-	pinMode(RIGHT230,INPUT);
-	pinMode(USB,INPUT);
-	pinMode(USB_CHARGER,INPUT);
+	pinMode(SWITCH1,INPUT);
+	pinMode(SWITCH2,INPUT);
+	pinMode(SWITCH3,INPUT);
+	pinMode(SWITCH4,INPUT);
 
 	int inputStates[INPUTS];
 	int tmp;

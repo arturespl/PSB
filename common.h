@@ -8,17 +8,17 @@
 #include <unistd.h>
 #include <string.h>
 
-#define LEFT230 	24
-#define RIGHT230 	25
-#define USB 		3
-#define USB_CHARGER 	23
+#define SWITCH1 	24
+#define SWITCH2 	25
+#define SWITCH3 	3
+#define SWITCH4 	23
 
 #define INPUTS 4
 
-#define V_RIGHT_CLOSE 26
-#define V_RIGHT_FAR 27
-#define V_LEFT_CLOSE 28
-#define V_LEFT_FAR 29
+#define RELAY1 26 //gniazdka sterowane
+#define RELAY2 27 //lewe gniazdko sterowane
+#define RELAY3 28 //prawe niazdko sterowane
+#define RELAY4 29 //zasilacz wewnetrzny
 
 #define OUTPUTS 4
 
